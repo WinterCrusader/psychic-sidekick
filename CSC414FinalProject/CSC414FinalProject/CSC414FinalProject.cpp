@@ -128,8 +128,14 @@ void itemSell(double &cost, int &input, int count[10])
 {
 	printMenu();
 	cin >> input;
-	switch (input)
+	if (!cin)
 	{
+		cin.clear();
+		cin.ignore();
+		cout << "Invalid input. Please try again." << endl;
+	}
+	switch (input)
+	{ 
 	case 1:
 		cout << "How many of item A would you like?" << endl;
 		cin >> count[0];
