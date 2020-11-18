@@ -202,7 +202,8 @@ void itemSell(double &cost, int &input)
 		cout << count[7] << " order(s) of Item H selected." << endl;
 		cout << count[8] << " order(s) of Item I selected." << endl;
 		cout << count[9] << " order(s) of Item J selected." << endl;
-		cout << "Order processed and received. The total cost was $" << setprecision(2) << fixed << cost << ". Have a good day!" << endl;
+		double totalCost = cost + (cost *0.07);
+		cout << "Order processed and received. The total cost was $" << setprecision(2) << fixed << totalCost << ". Have a good day!" << endl;
 		break;
 	default: 
 		cout << "Invalid input. Try again please." << endl;
