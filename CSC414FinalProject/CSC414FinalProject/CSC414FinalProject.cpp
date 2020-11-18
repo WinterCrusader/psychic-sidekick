@@ -6,12 +6,13 @@
 #include <iomanip>
 using namespace std;
 void printMenu();
-void itemSell(double &cost, int &input);
+void itemSell(double &cost, int &input, int count[10]);
 int main()
 {
 	//declare and initialize variables
 	int input = 0;
 	double cost = 0;
+	int count[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	/*int countA = 0;
 	int countB = 0;
 	int countC = 0;
@@ -24,7 +25,7 @@ int main()
 	int countJ = 0;*/
 	while (input != 11)
 	{
-		itemSell(cost, input);
+		itemSell(cost, input, count);
 		/*	printMenu();
 			cin >> input;
 			if (!cin)
@@ -123,14 +124,12 @@ void printMenu()
 		<< endl << "7. Item G: $7.60" << endl << "8. Item H: $8.92" << endl << "9. Item I: $9.22" << endl << "10. Item J: $10.37"
 		<< endl << "11. Finish Order and Exit" << endl;
 }
-void itemSell(double &cost, int &input)
+void itemSell(double &cost, int &input, int count[10])
 {
-	int count[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	printMenu();
-	cin >> input; 
+	cin >> input;
 	switch (input)
 	{
-		
 	case 1:
 		cout << "How many of item A would you like?" << endl;
 		cin >> count[0];
@@ -185,13 +184,14 @@ void itemSell(double &cost, int &input)
 		cost = cost + (9.22 * count[8]);
 		cout << count[8] << " order(s) of Item I selected." << endl;
 		break;
-	case 10: 
+	case 10:
 		cout << "How many of item J would you like?" << endl;
 		cin >> count[9];
 		cost = cost + (10.37 * count[9]);
 		cout << count[9] << " order(s) of Item J selected." << endl;
 		break;
-	case 11: 
+	case 11:
+	{
 		cout << count[0] << " order(s) of Item A selected." << endl;
 		cout << count[1] << " order(s) of Item B selected." << endl;
 		cout << count[2] << " order(s) of Item C selected." << endl;
@@ -204,7 +204,9 @@ void itemSell(double &cost, int &input)
 		cout << count[9] << " order(s) of Item J selected." << endl;
 		double totalCost = cost + (cost *0.07);
 		cout << "Order processed and received. The total cost was $" << setprecision(2) << fixed << totalCost << ". Have a good day!" << endl;
+	}
 		break;
-	default: 
+	default:
 		cout << "Invalid input. Try again please." << endl;
 	}
+}
